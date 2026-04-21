@@ -182,5 +182,6 @@ This project demonstrates how combining:
 
 can drive actionable product decisions.
 
-## 🔗 Live Dashboard  
-👉 https://app.powerbi.com/groups/me/reports/58fb1c27-98f5-40d8-b7d6-aea29ffce121?ctid=5b98a1d4-abc3-42cd-896e-2e1b240dc662&pbi_source=linkShare
+![image](<img width="605" height="340" alt="dashboard" src="https://github.com/user-attachments/assets/9e62e719-5440-4373-862b-a5c87623a8d8" />)
+
+**🔗 View Live Dashboards**: [Power BI Public] (https://app.powerbi.com/groups/me/reports/58fb1c27-98f5-40d8-b7d6-aea29ffce121?ctid=5b98a1d4-abc3-42cd-896e-2e1b240dc662&pbi_source=linkShare)
