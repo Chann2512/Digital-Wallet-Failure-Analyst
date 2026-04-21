@@ -1,187 +1,199 @@
-# 📊 Digital-Wallet-Failure-Analyst
-### Understanding and Reducing Authentication Friction 
-
+# 📊 Digital Wallet Failure Analysis  
+### Quantifying and Reducing Authentication Friction in Payment Flows
 
 ---
 
-# 🧭 Why This Problem Matters
+## 🧭 Problem Context
 
-In modern payment systems, authentication is required for fraud prevention and compliance. However, layers such as 3DS and OTP introduce friction into the user journey.
+In modern payment systems, authentication layers such as 3DS and OTP are essential for fraud prevention and regulatory compliance.  
 
-This creates a fundamental trade-off:
+However, these same mechanisms introduce friction into the user journey.
 
-> The same mechanisms that protect transactions can also prevent them from completing.
+> The mechanisms designed to secure transactions can also become the primary reason they fail.
 
 From a product perspective, this directly impacts:
 - Conversion rate  
 - Revenue realization  
 - User experience  
 
-This project focuses on answering:
+This analysis aims to answer:
 
-> How much of payment failure is driven by authentication friction, and how much can be improved?
-
----
-
-# 🔍 Framing the Investigation
-
-Instead of treating failures as isolated events, this analysis approaches the payment flow as a system with bottlenecks.
-
-Key objectives:
-- Identify where friction accumulates  
-- Quantify which failure types matter most  
-- Understand user behavior under friction  
-- Estimate the impact of targeted improvements  
-
-The goal is not just reporting, but enabling decision-making.
+> To what extent are payment failures driven by authentication friction, and where should we intervene for maximum impact?
 
 ---
 
-# 🧱 Building the Analytical Layer
+## 🔍 Analytical Approach
 
-Using SQL, raw transaction data was transformed into structured datasets:
+Rather than treating failures as isolated outcomes, this project models the payment flow as a system with identifiable bottlenecks.
 
-- Failure rate by time (hour-level)
-- Error hierarchy (L1 → L2)
-- Top failure contributors
-- User attempt sequences (retry behavior)
+The analysis focuses on:
 
-This enables:
+- Locating where friction accumulates  
+- Quantifying the dominant failure drivers  
+- Understanding user behavior under failure conditions  
+- Estimating the impact of targeted improvements  
+
+The objective is not just descriptive analytics, but decision-oriented insight.
+
+---
+
+## 🧱 Data Modeling & Transformation
+
+Using SQL, raw transaction data was transformed into analytical layers:
+
+- Failure rate over time (hour-level granularity)  
+- Hierarchical error classification (L1 → L2)  
+- Top contributing failure drivers  
+- User-level attempt sequencing (retry behavior)  
+
+These datasets enable:
 - Pattern detection  
-- Root cause analysis  
-- Scenario simulation  
+- Root cause decomposition  
+- Scenario-based simulation  
 
 ---
 
-# ⚠️ Where Failures Actually Come From
+## ⚠️ Failure Concentration: A Small Number of Drivers Dominate
 
-Failures are highly concentrated rather than evenly distributed.
+Failures are not evenly distributed.
 
-A small number of error types drive most failures:
+Instead, they are highly concentrated in a few key error types:
 
 - **3DS Timeout** → primary contributor  
 - **Invalid OTP** → secondary contributor  
 
-Key implication:
+> A small number of failure modes account for a disproportionate share of total failures.
 
-> Fixing a few high-impact issues is more effective than optimizing everything equally.
+**Implication:**  
+Targeting high-impact failure categories yields significantly higher ROI than broad optimizations.
 
 ---
 
-# ⏱️ Friction Scales With Time
+## ⏱️ Authentication Latency as a Core Driver
 
-Authentication success is strongly correlated with duration.
+Failure probability increases with authentication duration.
 
-By analyzing 3DS Duration:
+Analysis of 3DS duration reveals:
 
 - Short duration → high success rate  
-- Longer duration → sharply increasing failure rate  
+- Increasing duration → sharply rising failure probability  
+- Clear inflection point at ~35 seconds  
 
-A clear inflection point appears at ~35 seconds.
+> Beyond this threshold, user drop-off and timeout risk increase significantly.
 
-> Beyond this threshold, failure probability increases significantly.
-
-This shows that latency is a critical driver of failure.
+**Implication:**  
+Latency is not just a technical metric — it is a primary driver of conversion loss.
 
 ---
 
-# 🔁 Failures Are Not Always Final
+## 🔁 Failures Are Partially Recoverable
 
 User behavior analysis shows:
 
 - Users who retry quickly often succeed  
-- Success rate improves across attempts  
+- Success rates improve across subsequent attempts  
 
-This indicates:
-- Some failures are recoverable  
-- Improving retry experience can increase success rate  
+This suggests:
+
+- A portion of failures is recoverable  
+- User behavior adapts under friction  
+
+**Implication:**  
+Improving retry flows and guidance can convert failed transactions into successful ones.
 
 ---
 
-# 🧪 Scenario Simulation
+## 🧪 From Insight to Action: Scenario Simulation
 
-To move from insight to action, a simulation layer was built in Power BI.
+To move beyond diagnosis, a simulation layer was developed in Power BI.
 
-Instead of asking "what is happening", the model answers:
+Instead of asking *“what is happening”*, the model answers:
 
-> What happens if we fix specific failure drivers?
+> What is the expected impact if specific failure drivers are improved?
 
 ### Inputs:
-- % reduction in 3DS timeout  
-- % reduction in OTP errors  
+- Reduction in 3DS timeout (%)  
+- Reduction in OTP errors (%)  
 
 ### Outputs:
 - Projected failure rate  
-- Impact contribution by driver  
+- Contribution by driver  
 - Scenario comparison  
 
 ---
 
-# 📉 Key Findings From Simulation
+## 📉 Simulation Insights
 
-- Improvements show diminishing returns  
-- 3DS reduction has significantly higher impact than OTP improvements  
+- Improvements exhibit diminishing returns  
+- Reducing 3DS timeout delivers significantly higher impact than OTP improvements  
 
-Key takeaway:
-
-> 3DS is the primary bottleneck in the system.
+> 3DS friction is the dominant constraint in the system.
 
 ---
 
-# 🧠 Product Implications
+## 🧠 Product Implications
 
-### 1. Friction is the main constraint
-Failures are driven by user interaction with authentication, not system randomness.
+### 1. Authentication friction is the primary constraint  
+Failures are largely driven by user interaction with authentication flows, not random system errors.
 
-### 2. Time is a critical lever
-Reducing authentication duration can significantly improve success rate.
+### 2. Time is a critical lever  
+Reducing authentication latency can directly improve conversion.
 
-### 3. Recovery is an opportunity
-Better retry flows can convert failures into successes.
+### 3. Recovery is an opportunity  
+Well-designed retry experiences can recover otherwise lost transactions.
 
-### 4. Prioritization is essential
-Focus should be on high-impact drivers like 3DS.
-
----
-
-# 🛠️ Tools & Technologies
-
-- **SQL** → Data transformation and aggregation  
-- **Power BI** → Visualization and simulation  
-- **DAX** → Dynamic measures and scenario modeling  
+### 4. Prioritization drives impact  
+Focusing on 3DS-related issues yields the highest return on effort.
 
 ---
 
-# 📊 Visualization Strategy
+## 🛠️ Tools & Technologies
 
-The dashboard is designed to answer:
+- **SQL** → Data transformation & modeling  
+- **Power BI** → Visualization & simulation  
+- **DAX** → Dynamic measures & scenario modeling  
 
-- Where is the problem? → Time & error breakdown  
-- Why does it happen? → Duration & behavior  
-- What should we do? → Simulation  
+---
 
-Key visuals:
+## 📊 Visualization Strategy
+
+The dashboard is structured to answer three key questions:
+
+- **Where is the problem?** → Time & error distribution  
+- **Why does it happen?** → Duration & behavioral patterns  
+- **What should we do?** → Scenario simulation  
+
+Key visuals include:
+
 - Failure rate by hour  
 - Error distribution  
-- Duration vs failure  
-- Waterfall (impact breakdown)  
-- Scenario line chart  
+- Duration vs. failure rate  
+- Impact waterfall chart  
+- Scenario comparison line chart  
 
 ---
 
-# 🚀 Final Takeaway
+## 🚀 Final Takeaway
 
-> Payment failure is primarily a friction problem within authentication flows.
+> Payment failure is fundamentally a friction problem within authentication flows.
 
-Reducing 3DS-related friction provides the highest impact on improving success rate.
+Reducing 3DS-related friction presents the highest leverage opportunity to improve transaction success rates.
 
 This project demonstrates how combining:
 - Behavioral analysis  
-- System thinking  
+- System-level thinking  
 - Scenario modeling  
 
 can drive actionable product decisions.
 
-![image](https://github.com/user-attachments/assets/9e62e719-5440-4373-862b-a5c87623a8d8)
+---
 
-**🔗 View Live Dashboards**: [Power BI Public] (https://app.powerbi.com/groups/me/reports/58fb1c27-98f5-40d8-b7d6-aea29ffce121?ctid=5b98a1d4-abc3-42cd-896e-2e1b240dc662&pbi_source=linkShare)
+## 📷 Dashboard Preview
+
+![Dashboard](https://github.com/user-attachments/assets/9e62e719-5440-4373-862b-a5c87623a8d8)
+
+---
+
+## 🔗 Live Dashboard
+
+👉 [View on Power BI](https://app.powerbi.com/groups/me/reports/58fb1c27-98f5-40d8-b7d6-aea29ffce121?ctid=5b98a1d4-abc3-42cd-896e-2e1b240dc662&pbi_source=linkShare)
