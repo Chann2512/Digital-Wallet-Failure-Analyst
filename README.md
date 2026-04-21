@@ -35,6 +35,7 @@ The analysis focuses on:
 
 The objective is not just descriptive analytics, but decision-oriented insight.
 
+![Question](https://github.com/user-attachments/assets/b23f7d01-c529-474f-8896-d959848c2ce8)
 ---
 
 ## 🧱 Data Modeling & Transformation
