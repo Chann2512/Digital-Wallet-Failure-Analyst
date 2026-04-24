@@ -35,7 +35,6 @@ The analysis focuses on:
 
 The objective is not just descriptive analytics, but decision-oriented insight.
 
-![Question](https://github.com/user-attachments/assets/b23f7d01-c529-474f-8896-d959848c2ce8)
 ---
 
 ## 🧱 Data Modeling & Transformation
@@ -197,4 +196,4 @@ can drive actionable product decisions.
 
 ## 🔗 Live Dashboard
 
-👉 [View on Power BI]([https://app.powerbi.com/groups/me/reports/58fb1c27-98f5-40d8-b7d6-aea29ffce121?ctid=5b98a1d4-abc3-42cd-896e-2e1b240dc662&pbi_source=linkShare])
+👉 [View on Power BI]((https://app.powerbi.com/reportEmbed?reportId=ba1814ec-9093-4dc2-84c0-65183f5f58d4&autoAuth=true&ctid=be8329a7-7218-49a3-9ac1-d7b954563f39))
