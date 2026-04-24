@@ -196,4 +196,4 @@ can drive actionable product decisions.
 
 ## 🔗 Live Dashboard
 
-👉 [View on Power BI]((https://app.powerbi.com/reportEmbed?reportId=ba1814ec-9093-4dc2-84c0-65183f5f58d4&autoAuth=true&ctid=be8329a7-7218-49a3-9ac1-d7b954563f39))
+👉 [View on Power BI](https://app.powerbi.com/view?r=eyJrIjoiNDEzYmY5ODAtNjY4Ny00OTRhLWIxZmMtYzZiY2U0ZWVmYTE3IiwidCI6ImJlODMyOWE3LTcyMTgtNDlhMy05YWMxLWQ3Yjk1NDU2M2YzOSIsImMiOjEwfQ%3D%3D)
